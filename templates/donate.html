@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center mb-4">Make a Donation</h2>
+<form method="POST" novalidate>
+  {{ form.hidden_tag() }}
+
+  <div class="mb-3">
+    {{ form.name.label(class="form-label") }}
+    {{ form.name(class="form-control", placeholder="Enter your name") }}
+    {% for error in form.name.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.email.label(class="form-label") }}
+    {{ form.email(class="form-control", placeholder="Enter your email") }}
+    {% for error in form.email.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.amount.label(class="form-label") }}
+    {{ form.amount(class="form-control", placeholder="Amount in ₹") }}
+    {% for error in form.amount.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.cause.label(class="form-label") }}
+    {{ form.cause(class="form-select") }}
+    {% for error in form.cause.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  {{ form.submit(class="btn btn-success w-100") }}
+</form>
+{% endblock %}
